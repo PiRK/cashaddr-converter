@@ -24,14 +24,14 @@ func TestChecksumFails(t *testing.T) {
 	addr := RandomAddress(20, P2KH, MainNet)
 	packed, err := packAddress(addr)
 	assert.Nil(t, err)
-	chksum := calculateChecksum("bitcoincash", append(packed, 0, 0, 0, 0, 0, 0, 0, 0))
+	chksum := calculateChecksum("ecash", append(packed, 0, 0, 0, 0, 0, 0, 0, 0))
 	wchk := appendChecksum(packed, chksum)
 	errors := int(rand.Int31n(10) + 1)
 	for r := 0; r < errors; r++ {
 		position := rand.Int31n(int32(len(wchk)))
 		wchk[position] ^= uint8(rand.Int31n(32))
 	}
-	assert.NotEqual(t, uint64(0), calculateChecksum("bitcoincash", wchk), "checksum validation should have failed")
+	assert.NotEqual(t, uint64(0), calculateChecksum("ecash", wchk), "checksum validation should have failed")
 }
 
 func TestChecksum(t *testing.T) {
@@ -55,7 +55,7 @@ func TestChecksum(t *testing.T) {
 func TestUpperLower(t *testing.T) {
 	// Checksums are valid, but payload is not
 	values := []string{
-		"bitcoincash:qpm2qsznhKs23z7629mms6s4cwef74vcwvy22gdx6a",
+		"ecash:qpm2qsznhKs23z7629mms6s4cwef74vcwva87rkuu2",
 	}
 	for _, addr := range values {
 		_, err := Decode(addr, MainNet)

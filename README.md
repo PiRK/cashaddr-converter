@@ -1,8 +1,8 @@
 # CashAddr Converter
 
-This repository is a go implementation of the cashaddr and copay Bitcoin Cash
+This repository is a go implementation of the cashaddr and copay
 address formats.  The intent is to provide a command line tool, a
-reference implementation, and a microservice for use by the Bitcoin Cash
+reference implementation, and a microservice for use by the eCash
 community.
 
 # Prerequisites
@@ -28,7 +28,7 @@ to run the service.
 ### `cmd/svc`
 
 `svc` is a small microservice which will convert a provided address into all
-three currently used Bitcoin Cash address formats.
+three currently used cashaddr formats.
 
 ### `cashaddress`
 

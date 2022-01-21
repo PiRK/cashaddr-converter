@@ -10,9 +10,9 @@ type Address struct {
 
 // List of valid cashaddress prefixes
 const (
-	RegTest = "bchreg"
-	TestNet = "bchtest"
-	MainNet = "bitcoincash"
+	RegTest = "ecreg"
+	TestNet = "ectest"
+	MainNet = "ecash"
 )
 
 // Valid cashaddress types
@@ -49,7 +49,7 @@ func polyMod(v []uint8) uint64 {
 }
 
 // expandPrefix takes a string, and returns a byte array with each element
-// being the corropsonding character's right-most 5 bits.  Result additionally
+// being the corresponding character's right-most 5 bits.  Result additionally
 // includes a null termination byte.
 func expandPrefix(prefix string) []uint8 {
 	out := make([]uint8, 0, len(prefix)+1)
@@ -62,7 +62,7 @@ func expandPrefix(prefix string) []uint8 {
 	return out
 }
 
-// CalculateChecksum calculates a BCH checksum for a nibble-packed cashaddress
+// CalculateChecksum calculates a checksum for a nibble-packed cashaddress
 // that properly includes the network prefix.
 func calculateChecksum(prefix string, packedaddr []uint8) uint64 {
 	exphrp := expandPrefix(prefix)

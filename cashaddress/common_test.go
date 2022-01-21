@@ -33,16 +33,14 @@ func TestNetworkChange(t *testing.T) {
 		assert.Nil(t, err)
 
 		_, data := splitAddress(cashaddr, MainNet)
-		_, err = Decode(fmt.Sprintf("notbitcoincash:%s", data), "")
+		_, err = Decode(fmt.Sprintf("notecash:%s", data), "")
 		assert.NotNil(t, err, fmt.Sprintf("should not have decoded"))
 	}
 }
 
 func TestExpandPrefix(t *testing.T) {
-	expanded := expandPrefix("bitcoincash")
-	expected := []uint8{
-		'b' & 0x1F, 'i' & 0x1F, 't' & 0x1F, 'c' & 0x1F, 'o' & 0x1F, 'i' & 0x1F, 'n' & 0x1F,
-		'c' & 0x1F, 'a' & 0x1F, 's' & 0x1F, 'h' & 0x1F, 0}
+	expanded := expandPrefix("ecash")
+	expected := []uint8{'e' & 0x1F, 'c' & 0x1F, 'a' & 0x1F, 's' & 0x1F, 'h', 0}
 	assert.Equal(t, expected, expanded, "expansion invalid")
 }
 
@@ -80,14 +78,14 @@ func TestAddressEncodeDecode(t *testing.T) {
 	}
 	strings := map[uint8][]string{
 		P2KH: {
-			"bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a",
-			"bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy",
-			"bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r",
+			"ecash:qpm2qsznhks23z7629mms6s4cwef74vcwva87rkuu2",
+			"ecash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4ykdcjcn6n",
+			"ecash:qqq3728yw0y47sqn6l2na30mcw6zm78dzq653y7pv5",
 		},
 		P2SH: {
-			"bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq",
-			"bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e",
-			"bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37",
+			"ecash:ppm2qsznhks23z7629mms6s4cwef74vcwv2zrv3l8h",
+			"ecash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4ypg9alspw",
+			"ecash:pqq3728yw0y47sqn6l2na30mcw6zm78dzqd3vtezhf",
 		},
 	}
 	for i, payload := range payloads {

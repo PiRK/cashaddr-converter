@@ -6,8 +6,8 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/schancel/cashaddr-converter/cashaddress"
-	"github.com/schancel/cashaddr-converter/legacy"
+	"github.com/PiRK/cashaddr-converter/cashaddress"
+	"github.com/PiRK/cashaddr-converter/legacy"
 )
 
 type AddressType byte
@@ -20,9 +20,9 @@ const (
 type NetworkType string
 
 const (
-	RegTest NetworkType = "bchreg"
-	TestNet NetworkType = "bchtest"
-	MainNet NetworkType = "bitcoincash"
+	RegTest NetworkType = "ecreg"
+	TestNet NetworkType = "ectest"
+	MainNet NetworkType = "ecash"
 )
 
 // NewFromString takes a address string in Legacy or CashAddress format and
